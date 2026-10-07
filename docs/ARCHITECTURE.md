@@ -1,6 +1,6 @@
 # Architecture
 
-How a DrugTargetBench instance is built, what the agent can reach, and what stays sealed.
+How a DrugTargetWorld instance is built, what the agent can reach, and what stays sealed.
 The scoring contract is in [EVALUATION.md](EVALUATION.md) and the agent-facing brief is in [TASK.md](TASK.md).
 
 > [!NOTE]

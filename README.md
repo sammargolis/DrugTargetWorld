@@ -1,8 +1,8 @@
 <div align="center">
 
-# DrugTargetBench
+# DrugTargetWorld
 
-### An Environment for Therapeutic Target Discovery
+### Synthetic Biomedical Worlds for Training and Benchmarking AI Scientists
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/downloads/)
@@ -11,12 +11,13 @@
 [![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20assets-drugtargetworld--assets-orange)](https://huggingface.co/datasets/sammargolis/drugtargetworld-assets)
 [![Website](https://img.shields.io/badge/site-drugtargetworld.vercel.app-111111.svg)](https://drugtargetworld.vercel.app)
 
-Samuel Margolis<sup>1,2</sup>, Paul Schmiedmayer<sup>1</sup>, Alan Huang<sup>1,2</sup>, Ethan Chen<sup>3</sup>, Ishan Bhattacharjee<sup>1</sup>, Atman Shah<sup>3</sup>, Fang Cao<sup>1,2</sup>, Euan Ashley<sup>1,2</sup>, Bruna Gomes<sup>†1,2</sup>
+Samuel Margolis<sup>1,2</sup>, Paul Schmiedmayer<sup>3</sup>, Alan Huang<sup>1,2</sup>, Ethan Chen<sup>4</sup>, Ishan Bhattacharjee<sup>1</sup>, Atman Shah<sup>4</sup>, Ben Viggiano<sup>1,2</sup>, Fang Cao<sup>1,2</sup>, Shriya Reddy<sup>1,2</sup>, Roger Xia<sup>1,2</sup>, Jack O’Sullivan<sup>1,2</sup>, Daniel Katz<sup>2,3</sup>, Matthew Wheeler<sup>1,2</sup>, Euan Ashley<sup>1,2</sup>, Bruna Gomes<sup>†1,2</sup>
 
 <sub>
 <sup>1</sup>Department of Biomedical Data Science, Stanford University, Stanford, CA 94305, USA<br>
 <sup>2</sup>Department of Medicine, Stanford University, Stanford, CA 94305, USA<br>
-<sup>3</sup>Brown University, Providence, RI 02912, USA<br>
+<sup>3</sup>Division of Computational Medicine, Department of Medicine, Stanford University, Stanford, CA 94305, USA<br>
+<sup>4</sup>Brown University, Providence, RI 02912, USA<br>
 <sup>†</sup>Corresponding author: Bruna Gomes.
 </sub>
 
@@ -33,8 +34,26 @@ Samuel Margolis<sup>1,2</sup>, Paul Schmiedmayer<sup>1</sup>, Alan Huang<sup>1,2
 
 ---
 
+## Abstract
+
+Drug target discovery requires distinguishing molecules that causally drive disease from the many that are merely associated with it, and on determining the direction of modulation expected to improve disease.
+Artificial intelligence (AI) agents capable of writing and executing code may increasingly automate portions of this workflow; however, training and evaluating such agents to perform target discovery end-to-end requires access to known ground truth targets.
+Real world biobanks cannot provide such ground truth, as causal relationships remain incompletely characterized and nominated targets require experimental validation.
+Furthermore, access controls on participant-level data impede large-scale training.
+DrugTargetWorld addresses these challenges by procedurally generating simulated biobanks, or 'worlds,' each containing genotypes, proteins, health records, and outcomes for 54,000 participants, including 10,800 with synthetic magnetic resonance imaging (MRI) data.
+The present study instantiates this framework in cardiovascular disease while the underlying world generation framework is designed to support other disease domains.
+Each world is governed by a concealed causal model that specifies the ground truth, including causal driver proteins for a disease, and non-causal proteins that appear causal due to biases such as confounding.
+Agents are tasked with constructing a disease phenotype from raw images or other released data, identifying which proteins causally drive disease and inferring the beneficial direction of modulation for each causal driver with the option to conduct virtual ‘wet lab’ experiments.
+Across 540 episodes, Opus 5 and GPT-5.6 Sol led nine agents on a 100 point composite score spanning target identification, causal confidence, intervention direction, bias identification and disease measurement, scoring 39.98 and 35.38, respectively.
+Both recovered 64% of causal drivers on average, but no agent reliably distinguished misleading non-causal proteins; Opus 5’s advantage over GPT-5.6 Sol arose mainly from how well it measured disease from the raw data (7.2 versus 3.2 of 10 points).
+These findings suggest that leading agents can perform most individual analyses required in biobank studies but do not yet consistently make the integrative judgments needed to connect these analyses, namely how to measure disease, distinguish causal drivers from non-causal proteins, and determine when evidence is sufficient to support a claim.
+By making the causal structure of every world known but hidden from the agent, DrugTargetWorld turns end to end drug target discovery into a scalable, training problem in which research strategies can be evaluated against causal truth and improved through verifiable reward.
+
+---
+
 ## Table of Contents
 
+- [Abstract](#abstract)
 - [Run it](#run-it)
 - [Why a simulated environment](#why-a-simulated-environment)
 - [Architecture](#architecture)
@@ -105,7 +124,7 @@ Target discovery has no clean held out set.
 Published targets appear in model training data, and real cohorts carry data-use agreements that forbid the open redistribution a benchmark needs.
 More fundamentally, a real biobank cannot say which of its correlations are causal, so it cannot grade a causal claim.
 
-DrugTargetBench generates the ground truth instead.
+DrugTargetWorld generates the ground truth instead.
 Each world is drawn fresh from a structural causal model, so driver identities, weights, trap composition and archetype are sampled per instance.
 Knowing the design reveals nothing about any instance, which is what makes the design safe to describe openly while the answer keys stay sealed.
 Because the generator *is* the ground truth, an intervention is a real counterfactual: clamping a molecule re-runs every downstream structural equation rather than returning a stored lookup.
@@ -389,7 +408,7 @@ In v0.9 this is logged, not scored.
 ## Repository layout
 
 ```
-DrugTargetBench/
+DrugTargetWorld/
 ├── README.md
 ├── LICENSE
 ├── CITATION.cff
@@ -410,11 +429,14 @@ The generator, oracle, scorer and harness described in [docs/ARCHITECTURE.md](do
 ## Citation
 
 ```bibtex
-@article{2026drugtargetbench,
-  title   = {{DrugTargetBench}: An Environment for Therapeutic Target Discovery},
+@article{2026drugtargetworld,
+  title   = {{DrugTargetWorld}: Synthetic Biomedical Worlds for Training and
+             Benchmarking {AI} Scientists},
   author  = {Margolis, Samuel and Schmiedmayer, Paul and Huang, Alan and
              Chen, Ethan and Bhattacharjee, Ishan and Shah, Atman and
-             Cao, Fang and Ashley, Euan and Gomes, Bruna},
+             Viggiano, Ben and Cao, Fang and Reddy, Shriya and Xia, Roger and
+             O'Sullivan, Jack and Katz, Daniel and Wheeler, Matthew and
+             Ashley, Euan and Gomes, Bruna},
   year    = {2026}
 }
 ```
@@ -447,6 +469,6 @@ This repository distributes no ACDC data or derivatives.
 ---
 
 <div align="center">
-<i>DrugTargetBench is a research environment built on simulated data.<br>
+<i>DrugTargetWorld is a research environment built on simulated data.<br>
 No result here is evidence about a real therapeutic target.</i>
 </div>

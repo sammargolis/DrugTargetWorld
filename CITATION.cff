@@ -1,16 +1,46 @@
 cff-version: 1.2.0
-message: If you use DrugTargetBench, please cite it as below.
-title: "DrugTargetBench: An Environment for Therapeutic Target Discovery"
+message: If you use DrugTargetWorld, please cite it as below.
+title: "DrugTargetWorld: Synthetic Biomedical Worlds for Training and Benchmarking AI Scientists"
 abstract: >-
-  Therapeutic target discovery requires choosing disease measurements,
-  identifying causal molecules and deciding whether their perturbation would
-  improve outcomes. Real biobanks provide only partial ground truth for
-  evaluating this sequence of decisions. DrugTargetBench is an environment of
-  simulated cardiac biobank worlds governed by sealed structural causal models.
-  Agents receive multimodal population data, construct a phenotype, choose
-  analyses, nominate an unknown number of targets and purchase simulated
-  experiments under fixed budgets. Their causal and therapeutic claims are
-  scored against known drivers, misleading signals and intervention responses.
+  Drug target discovery requires distinguishing molecules that causally
+  drive disease from the many that are merely associated with it, and on
+  determining the direction of modulation expected to improve disease.
+  Artificial intelligence (AI) agents capable of writing and executing code
+  may increasingly automate portions of this workflow; however, training and
+  evaluating such agents to perform target discovery end-to-end requires
+  access to known ground truth targets. Real world biobanks cannot provide
+  such ground truth, as causal relationships remain incompletely
+  characterized and nominated targets require experimental validation.
+  Furthermore, access controls on participant-level data impede large-scale
+  training. DrugTargetWorld addresses these challenges by procedurally
+  generating simulated biobanks, or 'worlds,' each containing genotypes,
+  proteins, health records, and outcomes for 54,000 participants, including
+  10,800 with synthetic magnetic resonance imaging (MRI) data. The present
+  study instantiates this framework in cardiovascular disease while the
+  underlying world generation framework is designed to support other disease
+  domains. Each world is governed by a concealed causal model that specifies
+  the ground truth, including causal driver proteins for a disease, and non-
+  causal proteins that appear causal due to biases such as confounding.
+  Agents are tasked with constructing a disease phenotype from raw images or
+  other released data, identifying which proteins causally drive disease and
+  inferring the beneficial direction of modulation for each causal driver
+  with the option to conduct virtual ‘wet lab’ experiments. Across 540
+  episodes, Opus 5 and GPT-5.6 Sol led nine agents on a 100 point composite
+  score spanning target identification, causal confidence, intervention
+  direction, bias identification and disease measurement, scoring 39.98 and
+  35.38, respectively. Both recovered 64% of causal drivers on average, but
+  no agent reliably distinguished misleading non-causal proteins; Opus 5’s
+  advantage over GPT-5.6 Sol arose mainly from how well it measured disease
+  from the raw data (7.2 versus 3.2 of 10 points). These findings suggest
+  that leading agents can perform most individual analyses required in
+  biobank studies but do not yet consistently make the integrative judgments
+  needed to connect these analyses, namely how to measure disease,
+  distinguish causal drivers from non-causal proteins, and determine when
+  evidence is sufficient to support a claim. By making the causal structure
+  of every world known but hidden from the agent, DrugTargetWorld turns end
+  to end drug target discovery into a scalable, training problem in which
+  research strategies can be evaluated against causal truth and improved
+  through verifiable reward.
 type: software
 license: MIT
 repository-code: "https://github.com/sammargolis/DrugTargetWorld"
@@ -24,29 +54,47 @@ keywords:
   - cardiovascular
 authors:
   - given-names: Samuel
-    family-names: Margolis
+    family-names: "Margolis"
     affiliation: "Department of Biomedical Data Science, Stanford University"
   - given-names: Paul
-    family-names: Schmiedmayer
-    affiliation: "Department of Biomedical Data Science, Stanford University"
+    family-names: "Schmiedmayer"
+    affiliation: "Division of Computational Medicine, Department of Medicine, Stanford University"
   - given-names: Alan
-    family-names: Huang
+    family-names: "Huang"
     affiliation: "Department of Biomedical Data Science, Stanford University"
   - given-names: Ethan
-    family-names: Chen
+    family-names: "Chen"
     affiliation: "Brown University"
   - given-names: Ishan
-    family-names: Bhattacharjee
+    family-names: "Bhattacharjee"
     affiliation: "Department of Biomedical Data Science, Stanford University"
   - given-names: Atman
-    family-names: Shah
+    family-names: "Shah"
     affiliation: "Brown University"
+  - given-names: Ben
+    family-names: "Viggiano"
+    affiliation: "Department of Biomedical Data Science, Stanford University"
   - given-names: Fang
-    family-names: Cao
+    family-names: "Cao"
+    affiliation: "Department of Biomedical Data Science, Stanford University"
+  - given-names: Shriya
+    family-names: "Reddy"
+    affiliation: "Department of Biomedical Data Science, Stanford University"
+  - given-names: Roger
+    family-names: "Xia"
+    affiliation: "Department of Biomedical Data Science, Stanford University"
+  - given-names: Jack
+    family-names: "O’Sullivan"
+    affiliation: "Department of Biomedical Data Science, Stanford University"
+  - given-names: Daniel
+    family-names: "Katz"
+    affiliation: "Department of Medicine, Stanford University"
+  - given-names: Matthew
+    family-names: "Wheeler"
     affiliation: "Department of Biomedical Data Science, Stanford University"
   - given-names: Euan
-    family-names: Ashley
-    affiliation: "Department of Medicine, Stanford University"
+    family-names: "Ashley"
+    affiliation: "Department of Biomedical Data Science, Stanford University"
   - given-names: Bruna
-    family-names: Gomes
-    affiliation: "Department of Medicine, Stanford University"
+    family-names: "Gomes"
+    affiliation: "Department of Biomedical Data Science, Stanford University"
