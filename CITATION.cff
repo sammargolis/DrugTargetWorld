@@ -3,7 +3,7 @@ message: If you use DrugTargetWorld, please cite it as below.
 title: "DrugTargetWorld: Synthetic Biomedical Worlds for Training and Benchmarking AI Scientists"
 abstract: >-
   Drug target discovery requires distinguishing molecules that causally
-  drive disease from the many that are merely associated with it, and on
+  drive disease from the many that are merely associated with it, and
   determining the direction of modulation expected to improve disease.
   Artificial intelligence (AI) agents capable of writing and executing code
   may increasingly automate portions of this workflow; however, training and
@@ -38,7 +38,7 @@ abstract: >-
   distinguish causal drivers from non-causal proteins, and determine when
   evidence is sufficient to support a claim. By making the causal structure
   of every world known but hidden from the agent, DrugTargetWorld turns end
-  to end drug target discovery into a scalable, training problem in which
+  to end drug target discovery into a scalable training problem in which
   research strategies can be evaluated against causal truth and improved
   through verifiable reward.
 type: software
