@@ -13,8 +13,8 @@ abstract: >-
   scored against known drivers, misleading signals and intervention responses.
 type: software
 license: MIT
-repository-code: "https://github.com/sammargolis/DrugTargetBench"
-url: "https://drugtargetbench.vercel.app"
+repository-code: "https://github.com/sammargolis/DrugTargetWorld"
+url: "https://drugtargetworld.vercel.app"
 keywords:
   - benchmark
   - agentic AI

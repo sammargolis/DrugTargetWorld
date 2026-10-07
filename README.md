@@ -8,8 +8,8 @@
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/downloads/)
 [![arXiv](https://img.shields.io/badge/arXiv-pending-b31b1b.svg)](#citation)
 [![Harbor](https://img.shields.io/badge/harbor-drugtargetbench%40v1.0-2b7489.svg)](https://hub.harborframework.com/datasets/drugtargetbench/drugtargetbench)
-[![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20assets-drugtargetbench--assets-orange)](https://huggingface.co/datasets/sammargolis/drugtargetbench-assets)
-[![Website](https://img.shields.io/badge/site-drugtargetbench.vercel.app-111111.svg)](https://drugtargetbench.vercel.app)
+[![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20assets-drugtargetworld--assets-orange)](https://huggingface.co/datasets/sammargolis/drugtargetworld-assets)
+[![Website](https://img.shields.io/badge/site-drugtargetworld.vercel.app-111111.svg)](https://drugtargetworld.vercel.app)
 
 Samuel Margolis<sup>1,2</sup>, Paul Schmiedmayer<sup>1</sup>, Alan Huang<sup>1,2</sup>, Ethan Chen<sup>3</sup>, Ishan Bhattacharjee<sup>1</sup>, Atman Shah<sup>3</sup>, Fang Cao<sup>1,2</sup>, Euan Ashley<sup>1,2</sup>, Bruna Gomes<sup>†1,2</sup>
 
@@ -367,7 +367,7 @@ Component means are over the 60 episodes in each arm, on the rubric's 0–100 sc
 API arms are billed cost divided over 60 episodes.
 Self-hosted arms are GPU-hours × 2.50 USD/hour divided over 60 episodes, an upper bound because GPU-hours charge server residency rather than time under load.
 Self-hosted arms were served under vLLM 0.10.2 on H100 80GB.
-Interactive leaderboard and cost frontier: **[drugtargetbench.vercel.app](https://drugtargetbench.vercel.app)**.
+Interactive leaderboard and cost frontier: **[drugtargetworld.vercel.app](https://drugtargetworld.vercel.app)**.
 
 ---
 
