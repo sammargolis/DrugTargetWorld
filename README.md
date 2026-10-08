@@ -7,7 +7,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/downloads/)
 [![arXiv](https://img.shields.io/badge/arXiv-2610.09558-b31b1b.svg)](https://arxiv.org/abs/2610.09558)
-[![Harbor](https://img.shields.io/badge/harbor-drugtargetbench%40v1.0-2b7489.svg)](https://hub.harborframework.com/datasets/drugtargetbench/drugtargetbench)
+[![Harbor](https://img.shields.io/badge/harbor-drugtargetbench%40v1.1-2b7489.svg)](https://hub.harborframework.com/datasets/drugtargetbench/drugtargetbench)
 [![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20assets-drugtargetworld--assets-orange)](https://huggingface.co/datasets/sammargolis/drugtargetworld-assets)
 [![Website](https://img.shields.io/badge/site-drugtargetworld.vercel.app-111111.svg)](https://drugtargetworld.vercel.app)
 
@@ -72,34 +72,39 @@ By making each world's causal structure known to the evaluator but hidden from t
 
 ## Run it
 
-Requires [Docker](https://docs.docker.com/get-docker/) (running) and [uv](https://docs.astral.sh/uv/getting-started/installation/).
+Requires [Docker](https://docs.docker.com/get-docker/) (running), [uv](https://docs.astral.sh/uv/getting-started/installation/) and a [Hugging Face](https://huggingface.co) account.
+
+The world data is gated behind the ACDC terms, because the cine-MRI is derived from ACDC anatomy.
+Accept them once on the [dataset page](https://huggingface.co/datasets/sammargolis/drugtargetworld-assets), then create a [read token](https://huggingface.co/settings/tokens).
 
 ```bash
 uv tool install harbor
+export HF_TOKEN=hf_...
 
 harbor run \
-  -d drugtargetbench/drugtargetbench@v1.0 \
+  -d drugtargetbench/drugtargetbench@v1.1 \
   -a claude-code \
   -m claude-opus-5
 ```
 
 That is everything.
+The token is passed to the image build as a secret; it is never stored in the image and the agent cannot see it.
 Harbor pulls the task, pulls the image, downloads and checksum-verifies the world data, starts the experiment service, runs your agent, then scores it in a separate verifier container.
 
 ### Useful flags
 
 ```bash
 # one task instead of all 60
-harbor run -d drugtargetbench/drugtargetbench@v1.0 -a claude-code -m <model> --limit 1
+harbor run -d drugtargetbench/drugtargetbench@v1.1 -a claude-code -m <model> --limit 1
 
 # a single specific task
-harbor run -p drugtargetbench/hard-02-full-program -a claude-code -m <model>
+harbor run -d drugtargetbench/drugtargetbench@v1.1 -i drugtargetbench/hard-02-full-program -a claude-code -m <model>
 
 # concurrency (default 4) — each concurrent trial needs ~17 GB of disk
-harbor run -d drugtargetbench/drugtargetbench@v1.0 -a claude-code -m <model> -n 2
+harbor run -d drugtargetbench/drugtargetbench@v1.1 -a claude-code -m <model> -n 2
 
 # 3 attempts per task
-harbor run -d drugtargetbench/drugtargetbench@v1.0 -a claude-code -m <model> -k 3
+harbor run -d drugtargetbench/drugtargetbench@v1.1 -a claude-code -m <model> -k 3
 ```
 
 Agents available: `claude-code`, `codex`, `aider`, `swe-agent`, `terminus`, `oracle`, and others — `harbor agent list`.
@@ -399,7 +404,8 @@ Interactive leaderboard and cost frontier: **[drugtargetworld.vercel.app](https:
 
 **Imaging license.**
 Real-anatomy images derive from ACDC, which is registration-gated.
-This repository distributes no ACDC data or derivatives; cite ACDC if you use the imaging.
+This repository distributes no ACDC data or derivatives.
+The ACDC-derived imaging used by the benchmark is served only from the [gated asset dataset](https://huggingface.co/datasets/sammargolis/drugtargetworld-assets), to people who have accepted the ACDC terms; cite ACDC if you use the imaging.
 
 A governance audit runs beside the oracle audit: every knockdown request and every piece of agent-side evidence is checked against a data-use policy covering individual-level egress, cross-cohort joins, re-identification probing and out-of-scope access, and recorded outside the agent's working directory.
 In v0.9 this is logged, not scored.
