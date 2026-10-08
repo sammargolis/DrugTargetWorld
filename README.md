@@ -11,7 +11,7 @@
 [![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20assets-drugtargetworld--assets-orange)](https://huggingface.co/datasets/sammargolis/drugtargetworld-assets)
 [![Website](https://img.shields.io/badge/site-drugtargetworld.vercel.app-111111.svg)](https://drugtargetworld.vercel.app)
 
-**[Paper](https://arxiv.org/abs/2610.09558) · [Project website](https://drugtargetworld.vercel.app) · [Hugging Face dataset](https://huggingface.co/datasets/sammargolis/drugtargetworld-assets) · [Benchmark](https://hub.harborframework.com/datasets/drugtargetbench/drugtargetbench)**
+**[Paper](https://arxiv.org/abs/2610.09558) · [Full text (HTML)](https://drugtargetworld.vercel.app/paper) · [Project website](https://drugtargetworld.vercel.app) · [Hugging Face dataset](https://huggingface.co/datasets/sammargolis/drugtargetworld-assets) · [Benchmark](https://hub.harborframework.com/datasets/drugtargetbench/drugtargetbench)**
 
 Samuel Margolis<sup>1,2</sup>, Paul Schmiedmayer<sup>3</sup>, Alan Huang<sup>1,2</sup>, Ethan Chen<sup>4</sup>, Ishan Bhattacharjee<sup>1</sup>, Atman Shah<sup>4</sup>, Ben Viggiano<sup>1,2</sup>, Fang Cao<sup>1,2</sup>, Shriya Reddy<sup>1,2</sup>, Roger Xia<sup>1,2</sup>, Jack O'Sullivan<sup>1,2</sup>, Daniel Katz<sup>2,3</sup>, Matthew Wheeler<sup>1,2</sup>, Euan Ashley<sup>1,2</sup>, Bruna Gomes<sup>†1,2</sup>
 
