@@ -1,57 +1,52 @@
 cff-version: 1.2.0
-message: If you use DrugTargetWorld, please cite it as below.
-title: "DrugTargetWorld: Synthetic Biomedical Worlds for Training and Benchmarking AI Scientists"
+message: If you use DrugTargetWorld, please cite the paper below.
+title: "DrugTargetWorld: A Synthetic Biobank for Training and Benchmarking AI Scientists"
 abstract: >-
   Drug target discovery requires distinguishing molecules that causally
-  drive disease from the many that are merely associated with it, and
-  determining the direction of modulation expected to improve disease.
-  Artificial intelligence (AI) agents capable of writing and executing code
-  may increasingly automate portions of this workflow; however, training and
-  evaluating such agents to perform target discovery end-to-end requires
-  access to known ground truth targets. Real world biobanks cannot provide
-  such ground truth, as causal relationships remain incompletely
-  characterized and nominated targets require experimental validation.
-  Furthermore, access controls on participant-level data impede large-scale
-  training. DrugTargetWorld addresses these challenges by procedurally
-  generating simulated biobanks, or 'worlds,' each containing genotypes,
-  proteins, health records, and outcomes for 54,000 participants, including
-  10,800 with synthetic magnetic resonance imaging (MRI) data. The present
-  study instantiates this framework in cardiovascular disease while the
-  underlying world generation framework is designed to support other disease
-  domains. Each world is governed by a concealed causal model that specifies
-  the ground truth, including causal driver proteins for a disease, and non-
-  causal proteins that appear causal due to biases such as confounding.
-  Agents are tasked with constructing a disease phenotype from raw images or
-  other released data, identifying which proteins causally drive disease and
-  inferring the beneficial direction of modulation for each causal driver
-  with the option to conduct virtual ‘wet lab’ experiments. Across 540
-  episodes, Opus 5 and GPT-5.6 Sol led nine agents on a 100 point composite
-  score spanning target identification, causal confidence, intervention
-  direction, bias identification and disease measurement, scoring 39.98 and
-  35.38, respectively. Both recovered 64% of causal drivers on average, but
-  no agent reliably distinguished misleading non-causal proteins; Opus 5’s
-  advantage over GPT-5.6 Sol arose mainly from how well it measured disease
-  from the raw data (7.2 versus 3.2 of 10 points). These findings suggest
-  that leading agents can perform most individual analyses required in
-  biobank studies but do not yet consistently make the integrative judgments
-  needed to connect these analyses, namely how to measure disease,
-  distinguish causal drivers from non-causal proteins, and determine when
-  evidence is sufficient to support a claim. By making the causal structure
-  of every world known but hidden from the agent, DrugTargetWorld turns end
-  to end drug target discovery into a scalable training problem in which
-  research strategies can be evaluated against causal truth and improved
-  through verifiable reward.
+  drive disease from those that are merely associated with it. Training and
+  evaluating AI agents to perform this workflow end-to-end is difficult
+  because real world biobanks lack known causal ground truth and
+  participant-level data is access controlled. We introduce DrugTargetWorld,
+  a framework that procedurally generates simulated biobanks, or "worlds,"
+  with known but concealed causal structure. Each world contains genotypes,
+  proteins, health records, outcomes, and synthetic magnetic resonance
+  imaging (MRI) for 54,000 participants. Agents must construct a disease
+  phenotype, identify causal driver proteins, infer the beneficial direction
+  of modulation, and optionally conduct virtual 'wet lab' experiments. We
+  evaluated nine agents in 540 episodes across 20 cardiovascular worlds and
+  three experimental budgets. Opus 5 and GPT-5.6 Sol achieved the highest
+  mean composite scores, 39.98 and 35.38 of 100, respectively, and both
+  recovered 64% of causal drivers on average. However, no agent reliably
+  distinguished misleading non-causal proteins, and performance remained
+  limited by the integrative judgments required to connect phenotype
+  construction, causal evidence, and intervention decisions. By making each
+  world's causal structure known to the evaluator but hidden from the agent,
+  DrugTargetWorld turns end-to-end drug target discovery into a scalable
+  training and evaluation problem with verifiable reward.
 type: software
 license: MIT
 repository-code: "https://github.com/sammargolis/DrugTargetWorld"
 url: "https://drugtargetworld.vercel.app"
+doi: 10.48550/arXiv.2610.09558
+identifiers:
+  - type: doi
+    value: 10.48550/arXiv.2610.09558
+    description: arXiv DOI for the paper
+  - type: url
+    value: "https://arxiv.org/abs/2610.09558"
+    description: arXiv abstract page
+  - type: url
+    value: "https://huggingface.co/datasets/sammargolis/drugtargetworld-assets"
+    description: Benchmark assets on Hugging Face
 keywords:
+  - drug target discovery
+  - AI scientists
+  - AI agents
+  - synthetic biobank
   - benchmark
-  - agentic AI
   - causal inference
   - Mendelian randomization
-  - target discovery
-  - cardiovascular
+  - cardiovascular disease
 authors:
   - given-names: Samuel
     family-names: "Margolis"
@@ -84,7 +79,7 @@ authors:
     family-names: "Xia"
     affiliation: "Department of Biomedical Data Science, Stanford University"
   - given-names: Jack
-    family-names: "O’Sullivan"
+    family-names: "O'Sullivan"
     affiliation: "Department of Biomedical Data Science, Stanford University"
   - given-names: Daniel
     family-names: "Katz"
@@ -98,3 +93,59 @@ authors:
   - given-names: Bruna
     family-names: "Gomes"
     affiliation: "Department of Biomedical Data Science, Stanford University"
+preferred-citation:
+  type: article
+  title: "DrugTargetWorld: A Synthetic Biobank for Training and Benchmarking AI Scientists"
+  journal: "arXiv preprint arXiv:2610.09558"
+  year: 2026
+  month: 10
+  date-published: 2026-10-07
+  doi: 10.48550/arXiv.2610.09558
+  url: "https://arxiv.org/abs/2610.09558"
+  repository-code: "https://github.com/sammargolis/DrugTargetWorld"
+  authors:
+    - given-names: Samuel
+      family-names: "Margolis"
+      affiliation: "Department of Biomedical Data Science, Stanford University"
+    - given-names: Paul
+      family-names: "Schmiedmayer"
+      affiliation: "Division of Computational Medicine, Department of Medicine, Stanford University"
+    - given-names: Alan
+      family-names: "Huang"
+      affiliation: "Department of Biomedical Data Science, Stanford University"
+    - given-names: Ethan
+      family-names: "Chen"
+      affiliation: "Brown University"
+    - given-names: Ishan
+      family-names: "Bhattacharjee"
+      affiliation: "Department of Biomedical Data Science, Stanford University"
+    - given-names: Atman
+      family-names: "Shah"
+      affiliation: "Brown University"
+    - given-names: Ben
+      family-names: "Viggiano"
+      affiliation: "Department of Biomedical Data Science, Stanford University"
+    - given-names: Fang
+      family-names: "Cao"
+      affiliation: "Department of Biomedical Data Science, Stanford University"
+    - given-names: Shriya
+      family-names: "Reddy"
+      affiliation: "Department of Biomedical Data Science, Stanford University"
+    - given-names: Roger
+      family-names: "Xia"
+      affiliation: "Department of Biomedical Data Science, Stanford University"
+    - given-names: Jack
+      family-names: "O'Sullivan"
+      affiliation: "Department of Biomedical Data Science, Stanford University"
+    - given-names: Daniel
+      family-names: "Katz"
+      affiliation: "Department of Medicine, Stanford University"
+    - given-names: Matthew
+      family-names: "Wheeler"
+      affiliation: "Department of Biomedical Data Science, Stanford University"
+    - given-names: Euan
+      family-names: "Ashley"
+      affiliation: "Department of Biomedical Data Science, Stanford University"
+    - given-names: Bruna
+      family-names: "Gomes"
+      affiliation: "Department of Biomedical Data Science, Stanford University"
