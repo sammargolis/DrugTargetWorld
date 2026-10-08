@@ -5,7 +5,7 @@ The scoring contract is in [EVALUATION.md](EVALUATION.md) and the agent-facing b
 
 > [!NOTE]
 > This document describes the design of the environment, not the contents of this repository.
-> Every path named below refers to the [source tree](https://github.com/sammargolis/cardiobench/tree/v2RWEBench/harbor), not to a file in this repository.
+> Every path named below refers to the source tree (Coming Soon), not to a file in this repository.
 > Running the benchmark does not require the source; Harbor pulls a prebuilt image.
 
 ## Loop

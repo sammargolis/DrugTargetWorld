@@ -36,7 +36,7 @@ Samuel Margolis<sup>1,2</sup>, Paul Schmiedmayer<sup>3</sup>, Alan Huang<sup>1,2
 
 ## Abstract
 
-Drug target discovery requires distinguishing molecules that causally drive disease from the many that are merely associated with it, and on determining the direction of modulation expected to improve disease.
+Drug target discovery requires distinguishing molecules that causally drive disease from the many that are merely associated with it, and determining the direction of modulation expected to improve disease.
 Artificial intelligence (AI) agents capable of writing and executing code may increasingly automate portions of this workflow; however, training and evaluating such agents to perform target discovery end-to-end requires access to known ground truth targets.
 Real world biobanks cannot provide such ground truth, as causal relationships remain incompletely characterized and nominated targets require experimental validation.
 Furthermore, access controls on participant-level data impede large-scale training.
@@ -47,7 +47,7 @@ Agents are tasked with constructing a disease phenotype from raw images or other
 Across 540 episodes, Opus 5 and GPT-5.6 Sol led nine agents on a 100 point composite score spanning target identification, causal confidence, intervention direction, bias identification and disease measurement, scoring 39.98 and 35.38, respectively.
 Both recovered 64% of causal drivers on average, but no agent reliably distinguished misleading non-causal proteins; Opus 5’s advantage over GPT-5.6 Sol arose mainly from how well it measured disease from the raw data (7.2 versus 3.2 of 10 points).
 These findings suggest that leading agents can perform most individual analyses required in biobank studies but do not yet consistently make the integrative judgments needed to connect these analyses, namely how to measure disease, distinguish causal drivers from non-causal proteins, and determine when evidence is sufficient to support a claim.
-By making the causal structure of every world known but hidden from the agent, DrugTargetWorld turns end to end drug target discovery into a scalable, training problem in which research strategies can be evaluated against causal truth and improved through verifiable reward.
+By making the causal structure of every world known but hidden from the agent, DrugTargetWorld turns end to end drug target discovery into a scalable training problem in which research strategies can be evaluated against causal truth and improved through verifiable reward.
 
 ---
 
@@ -72,6 +72,8 @@ By making the causal structure of every world known but hidden from the agent, D
 ---
 
 ## Run it
+
+Requires [Docker](https://docs.docker.com/get-docker/) (running) and [uv](https://docs.astral.sh/uv/getting-started/installation/).
 
 ```bash
 uv tool install harbor
@@ -422,7 +424,7 @@ DrugTargetWorld/
 ```
 
 This repository is documentation.
-The generator, oracle, scorer and harness described in [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) live in the [source tree](https://github.com/sammargolis/cardiobench/tree/v2RWEBench/harbor); you do not need them to run the benchmark, since Harbor pulls a prebuilt image.
+The generator, oracle, scorer and harness described in [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) live in the source tree (Coming Soon); you do not need them to run the benchmark, since Harbor pulls a prebuilt image.
 
 ---
 
